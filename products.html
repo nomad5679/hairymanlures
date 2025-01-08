@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hairyman Lures - Products</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <title>Product Demo</title>
 
+    <title>Hairyman Lures - Products</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="
+
+  
   <header>
     <div class="container header-content">
       <img src="logo.png" alt="Hairyman Lures Logo" class="logo">
@@ -17,23 +19,103 @@
     </div>
   </header>
 
-  <main class="product-container">
-    <div class="product" data-id="1" data-name="Sasquach Stick Bait - Green" data-price="5.99">
-      <img src="placeholder.png" alt="Product Image" class="product-image">
-      <h3>Sasquach Stick Bait - Green</h3>
-      <p>Price: $5.99</p>
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .product-container {
+      display: flex;
+      gap: 20px;
+    }
+
+    .product {
+      width: 150px;
+      height: 200px;
+      background-color: #fff;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      transition: all 0.3s ease-in-out;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .product:hover {
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .product.clicked {
+      width: 200px;
+      height: 250px;
+      border-color: #28a745;
+    }
+
+    .add-to-cart {
+      display: none;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .add-to-cart.visible {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="product-container">
+    <div class="product" data-id="1" data-name="Product 1" data-price="10.99">
+      <h3>Product 1</h3>
       <button class="add-to-cart">Add to Cart</button>
     </div>
-    <div class="product" data-id="2" data-name="Sasquach Stick Bait - Blue" data-price="6.49">
-      <img src="placeholder.png" alt="Product Image" class="product-image">
-      <h3>Sasquach Stick Bait - Blue</h3>
-      <p>Price: $6.49</p>
+    <div class="product" data-id="2" data-name="Product 2" data-price="14.99">
+      <h3>Product 2</h3>
       <button class="add-to-cart">Add to Cart</button>
     </div>
-  </main>
-  <div id="cart-notification" class="cart-notification">
-    <span id="cart-notification-text"></span>
   </div>
-  <script src="script.js"></script>
+
+  <script>
+    // Handle click events for product enlargement and button visibility
+    document.querySelectorAll('.product').forEach((product) => {
+      product.addEventListener('click', () => {
+        // Toggle the clicked state
+        product.classList.toggle('clicked');
+
+        // Show or hide the Add to Cart button
+        const addButton = product.querySelector('.add-to-cart');
+        if (addButton) {
+          addButton.classList.toggle('visible');
+        }
+
+        // Close other products if clicking on a new one
+        document.querySelectorAll('.product').forEach((otherProduct) => {
+          if (otherProduct !== product) {
+            otherProduct.classList.remove('clicked');
+            const otherButton = otherProduct.querySelector('.add-to-cart');
+            if (otherButton) {
+              otherButton.classList.remove('visible');
+            }
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
