@@ -34,6 +34,7 @@ function addToCart(product) {
   }
 
   
+
 // Add event listener for each product
 document.querySelectorAll('.product').forEach((product) => {
   product.addEventListener('click', () => {
