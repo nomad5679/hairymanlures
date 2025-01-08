@@ -1,7 +1,7 @@
 # Hairyman Lures Website
-### This website is currently a work in progress, and is unfinished.
+## This website is currently a work in progress, and is unfinished.
 
-##### TO-DO
+### TO-DO
 Import images into github
 
 Fix carousel to have real testomonies
