@@ -35,41 +35,6 @@ function addToCart(product) {
 
   
 
-// Add event listener for each product
-document.querySelectorAll('.product').forEach((product) => {
-  product.addEventListener('click', () => {
-    // Toggle visibility of the Add to Cart button
-    const addButton = product.querySelector('.add-to-cart');
-    if (addButton) {
-      addButton.classList.toggle('visible');
-    }
-
-    // Close other buttons if clicking a new product
-    document.querySelectorAll('.product').forEach((p) => {
-      if (p !== product) {
-        const otherButton = p.querySelector('.add-to-cart');
-        if (otherButton) {
-          otherButton.classList.remove('visible');
-        }
-      }
-    });
-  });
-});
-
-// Add to Cart button functionality
-document.querySelectorAll('.add-to-cart').forEach((button) => {
-  button.addEventListener('click', (event) => {
-    event.stopPropagation(); // Prevent triggering the product click event
-    const productElement = button.closest('.product');
-    const product = {
-      id: productElement.dataset.id,
-      name: productElement.dataset.name,
-      price: parseFloat(productElement.dataset.price),
-    };
-    addToCart(product);
-  });
-});
-
 
 
 // Display cart items in the cart page
