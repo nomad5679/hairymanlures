@@ -33,69 +33,41 @@ function addToCart(product) {
     }, 5000);  // Hide after 5 seconds
   }
 
-// Load the cart data from localStorage or initialize it if it's not available
-const cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-function addToCart(product) {
-  cart.push(product);
-  localStorage.setItem('cart', JSON.stringify(cart));
-
-  // Show cart notification
-  const notification = document.getElementById('cart-notification');
-  const notificationText = document.getElementById('cart-notification-text');
-
-  notificationText.textContent = `${product.name} added to cart!`;
-  notification.classList.add('show');
-
-  setTimeout(() => {
-    notification.classList.remove('show');
-    notification.classList.add('hide');
-  }, 5000);
-}
-
-// Load the cart data from localStorage or initialize it if it's not available
-const cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-function addToCart(product) {
-  cart.push(product);
-  localStorage.setItem('cart', JSON.stringify(cart));
-
-  // Show cart notification
-  const notification = document.getElementById('cart-notification');
-  const notificationText = document.getElementById('cart-notification-text');
-
-  notificationText.textContent = `${product.name} added to cart!`;
-  notification.classList.add('show');
-
-  setTimeout(() => {
-    notification.classList.remove('show');
-    notification.classList.add('hide');
-  }, 5000);
-}
-
-// Event listener for enlarging product and showing the "Add to Cart" button
+  
+// Add event listener for each product
 document.querySelectorAll('.product').forEach((product) => {
   product.addEventListener('click', () => {
-    document.querySelectorAll('.product').forEach((p) => p.classList.remove('clicked'));
-    product.classList.add('clicked');
+    // Toggle visibility of the Add to Cart button
+    const addButton = product.querySelector('.add-to-cart');
+    if (addButton) {
+      addButton.classList.toggle('visible');
+    }
+
+    // Close other buttons if clicking a new product
+    document.querySelectorAll('.product').forEach((p) => {
+      if (p !== product) {
+        const otherButton = p.querySelector('.add-to-cart');
+        if (otherButton) {
+          otherButton.classList.remove('visible');
+        }
+      }
+    });
   });
 });
 
-// Event listener for adding products to the cart
-if (document.querySelectorAll('.add-to-cart')) {
-  document.querySelectorAll('.add-to-cart').forEach((button) => {
-    button.addEventListener('click', (event) => {
-      event.stopPropagation(); // Prevent triggering the product click event
-      const productElement = button.closest('.product');
-      const product = {
-        id: productElement.dataset.id,
-        name: productElement.dataset.name,
-        price: parseFloat(productElement.dataset.price),
-      };
-      addToCart(product);
-    });
+// Add to Cart button functionality
+document.querySelectorAll('.add-to-cart').forEach((button) => {
+  button.addEventListener('click', (event) => {
+    event.stopPropagation(); // Prevent triggering the product click event
+    const productElement = button.closest('.product');
+    const product = {
+      id: productElement.dataset.id,
+      name: productElement.dataset.name,
+      price: parseFloat(productElement.dataset.price),
+    };
+    addToCart(product);
   });
-}
+});
 
 
 
