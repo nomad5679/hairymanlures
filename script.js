@@ -97,21 +97,7 @@ if (document.querySelectorAll('.add-to-cart')) {
   });
 }
 
-  
-// Event listener for adding products to the cart
-if (document.querySelectorAll('.add-to-cart')) {
-  document.querySelectorAll('.add-to-cart').forEach(button => {
-    button.addEventListener('click', () => {
-      const productElement = button.closest('.product');
-      const product = {
-        id: productElement.dataset.id,
-        name: productElement.dataset.name,
-        price: parseFloat(productElement.dataset.price),
-      };
-      addToCart(product);
-    });
-  });
-}
+
 
 // Display cart items in the cart page
 if (document.getElementById('cart-items')) {
