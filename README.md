@@ -1,4 +1,4 @@
-# Hairyman Lures Website
+# Hairyman Lures
 ## This website is currently a work in progress, and is unfinished.
 
 ### TO-DO
