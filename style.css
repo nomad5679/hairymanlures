@@ -169,8 +169,6 @@ h3 { font-size: 1.3rem; }
 }
 
 
-
-
 /* ==========================================================
    HOMEPAGE ONLY. Shared look lives in base.css.
    ========================================================== */
@@ -273,5 +271,3 @@ h3 { font-size: 1.3rem; }
   .story .photo { max-width: 420px; }
   .hero { min-height: 0; }
 }
-
-
